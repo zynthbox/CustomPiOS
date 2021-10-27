@@ -29,7 +29,7 @@ rm -f /etc/wpa_supplicant/wpa_supplicant.conf                        # remove di
 
 if [ "${BASE_DISTRO}" == "raspbian" ]; then
     # Workaround rfkill not unblocking on boot
-    rm /var/lib/systemd/rfkill/*
+    rm /var/lib/systemd/rfkill/* || true
 fi
 
 # create symlink
