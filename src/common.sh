@@ -322,6 +322,9 @@ FDISK
     fi
   else
     echo_red "Could not determine the filesystem of the volume, output is: $(file -Ls $LODEV)"
+    echo "Trying to resize assuming it is ext4"
+    e2fsck -fy $LODEV
+    resize2fs -p $LODEV
   fi
   losetup -d $LODEV
 
