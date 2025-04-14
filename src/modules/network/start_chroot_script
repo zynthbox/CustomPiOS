@@ -24,8 +24,8 @@ if [ "${BASE_DISTRO}" == "ubuntu" ] || [ "${BASE_DISTRO}" == "armbian" ]; then
     echo "update_config=1" >> /etc/wpa_supplicant/wpa_supplicant.conf
 fi
 
-cat /etc/wpa_supplicant/wpa_supplicant.conf >> ${DIST_NETWORK_FILE}  # append distributed conf to our own
-rm -f /etc/wpa_supplicant/wpa_supplicant.conf                        # remove distributed conf
+[ -f /etc/wpa_supplicant/wpa_supplicant.conf ] && cat /etc/wpa_supplicant/wpa_supplicant.conf >> ${DIST_NETWORK_FILE}  # append distributed conf to our own
+[ -f /etc/wpa_supplicant/wpa_supplicant.conf ] && rm -f /etc/wpa_supplicant/wpa_supplicant.conf                        # remove distributed conf
 
 if [ "${BASE_DISTRO}" == "raspbian" ]; then
     # Workaround rfkill not unblocking on boot
