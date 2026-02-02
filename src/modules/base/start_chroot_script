@@ -26,8 +26,8 @@ if [ "${BASE_DISTRO}" == "ubuntu" ]; then
   
   apt-get update --allow-releaseinfo-change
   apt-get install -y net-tools wireless-tools dhcpcd5
-  if [ $( is_in_apt policykit-1 ) -eq 1 ]; then
-    apt-get -y install policykit-1
+  if [ $( is_in_apt polkitd ) -eq 1 ]; then
+    apt-get -y install polkitd
   fi
   
   # prevent any installed services from automatically starting
