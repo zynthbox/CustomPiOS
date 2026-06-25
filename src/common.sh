@@ -279,6 +279,10 @@ function enlarge_ext() {
   partition=$2
   size=$3
 
+  # Before expanding clean apt cache and check if there is enough space to expand the partition
+  apt clean
+  df -h
+
   echo_green "Adding $size MB to partition $partition of $image"
   start=$(sfdisk --json "${image}" | jq ".partitiontable.partitions[] | select(.node ==  \"$image$partition\").start")
   offset=$(($start*512))
